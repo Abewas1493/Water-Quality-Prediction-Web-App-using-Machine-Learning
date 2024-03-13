@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Predict</title>
+    <link rel="stylesheet" href="../static/CSS/PredictStyle.css" />
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <div class="logo">
+                    <img src="../static/Images/water.png">
+                </div>
+            </div>
+            <ul class="links">
+                <li><a href="/">HOME</a></li>
+                <li><a class="active" href="/predict">PREDICT</a></li>
+                <li><a href="/dash">DASHBOARD</a></li>
+                <li><a href="/info">FAQs</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <h1>Water Quality Prediction</h1>
+        <div class="upload">
+            <button class="button" onclick="loadCSV()">Upload CSV File</button>
+        </div>
+        <div class="text">
+            <p>Discover the health of your water with a simple prediction.<br>Enter the parameters of your water sample,
+                and
+                let us unveil its quality for you.</p>
+        </div>
+        <form class="form" action="#" method="POST">
+            <div class="input-box">
+                <input type="number" name="ph" placeholder="ph" required="required" step="0.000000001"
+                max="14" min="0"
+                    value="{{ form_data['ph'] }}">
+            </div>
+            <div class="input-box">
+                <input type="number" name="Hardness" placeholder="Hardness" required="required" step="0.000000001"
+                    value="{{ form_data['Hardness'] }}">
+            </div>
+            <div class="input-box">
+                <input type="number" name="Solids" placeholder="Solids" required="required" step="0.000000001"
+                    value="{{ form_data['Solids'] }}">
+            </div>
+            <div class="input-box">
+                <input type="number" name="Chloramines" placeholder="Chloramines" required="required" step="0.000000001"
+                    value="{{ form_data['Chloramines'] }}">
+            </div>
+            <div class="input-box">
+                <input type="number" name="Sulfate" placeholder="Sulfate" required="required" step="0.000000001"
+                    value="{{ form_data['Sulfate'] }}">
+            </div>
+            <div class="input-box">
+                <input type="number" name="Conductivity" placeholder="Conductivity" required="required"
+                    step="0.000000001" value="{{ form_data['Conductivity'] }}">
+            </div>
+            <div class="input-box">
+                <input type="number" name="Organic_carbon" placeholder="Organic_carbon" required="required"
+                    step="0.000000001" value="{{ form_data['Organic_carbon'] }}">
+            </div>
+            <div class="input-box">
+                <input type="number" name="Trihalomethanes" placeholder="Trihalomethanes" required="required"
+                    step="0.000000001" value="{{ form_data['Trihalomethanes'] }}">
+            </div>
+            <div class="input-box">
+                <input type="number" name="Turbidity" placeholder="Turbidity" required="required" step="0.000000001"
+                    value="{{ form_data['Turbidity'] }}">
+            </div>
+            <div class="btn">
+                <button type="submit" value="value" name="predict">Predict</button>
+            </div>
+        </form>
+        <div class="flashed-message-container">
+            <div class="flashed-message">
+                <p>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                    {% if 'Becareful!' in message %}
+                    <div class="flash-message error">
+                        <i class="fas fa-exclamation-triangle"></i> {{ message | safe }}
+                    </div>
+                    {% elif 'Congrats!' in message %}
+                    <div class="flash-message success">
+                        <i class="fas fa-check-circle"></i> {{ message | safe }}
+                    </div>
+                    {% else %}
+                    <div class="flash-message">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+                </p>
+            </div>
+        </div>
+    </section>
+    <script src="../static/JavaScript/PredictScript.js"></script>
+</body>
+
+</html>
