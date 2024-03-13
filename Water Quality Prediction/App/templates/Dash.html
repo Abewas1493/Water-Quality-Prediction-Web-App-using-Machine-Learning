@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../static/CSS/DashStyle.css" />
+</head>
+
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <div class="logo">
+          <img src="../static/Images/water.png">
+        </div>
+      </div>
+      <ul class="links">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/predict">PREDICT</a></li>
+        <li><a class="active" href="/dash">DASHBOARD</a></li>
+        <li><a href="/info">FAQs</a></li>
+      </ul>
+    </div>
+  </header>
+  <div id="initialContent" class="initialcontent">
+    <h1>
+      Explore the water quality data 📊
+    </h1>
+    <p>
+      Dive into the world of water quality analysis and make informed decisions. Whether you're a researcher,
+      environmental enthusiast, or a concerned citizen, this dashboard offers valuable insights into the crucial realm
+      of water quality. Explore, learn, and stay informed!
+    </p>
+    <div id="piechart-container"></div>
+  </div>
+  <div class="dashboard">
+    <div class="sidebar">
+      <div class="graphs">
+        <label>Dashboard</label>
+      </div>
+      <div id="radioContent" class="radio-group">
+        <label><input type="radio" name="chartType" value="BoxPlot" onchange="loadChart()" />Summary Statistics</label>
+        <label><input type="radio" name="chartType" value="Scatter Plot" onchange="loadChart()" />Ph Vs Sulpfate</label>
+        <label><input type="radio" name="chartType" value="PH Histogram" onchange="loadChart()" />Ph</label>
+        <label><input type="radio" name="chartType" value="OrganicCarbon" onchange="loadChart()" />Organic
+          Carbon</label>
+        <label><input type="radio" name="chartType" value="Hardness" onchange="loadChart()" />Hardness</label>
+        <label><input type="radio" name="chartType" value="Sulphate" onchange="loadChart()" />Sulphate</label>
+        <label><input type="radio" name="chartType" value="Conductivity" onchange="loadChart()" />Conductivity</label>
+        <label><input type="radio" name="chartType" value="Turbidity" onchange="loadChart()" />Turbidity</label>
+      </div>
+      <div class="Download">
+        <label>Download csv file?</label>
+        <button onclick="downloadCSV()">Download</button>
+      </div>
+    </div>
+    <div id="chart-container"></div>
+  </div>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="../static/JavaScript/DashScript.js"></script>
+</body>
+
+</html>
