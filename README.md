@@ -3,7 +3,7 @@
 This is a web application built with Flask to predict the potability of water based on certain input parameters. The application provides a user-friendly interface for users to input water quality parameters, and it predicts whether the water is safe and potable or not.
 
 # Features
-    Home Page: Navigate to the home page to access the main functionality of the application.
+    Home Page: Navigate to the home page to access the application's main functionality.
     Prediction: Input water quality parameters and receive a prediction on whether the water is safe or not.
     Dashboard: View a dashboard with additional information (dummy endpoint).
     Download CSV: Download a CSV file containing water potability data.
