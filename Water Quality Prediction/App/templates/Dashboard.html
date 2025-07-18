@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Water Quality Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #e9ecf0ff;
+      }
+    </style>
+  </head>
+
+  <body class="text-gray-800">
+    <div class="flex h-screen">
+      <!-- Sidebar -->
+      <aside style="background-color: oklch(97.7% 0.013 236.62);" class="w-64 shadow-xl p-6 hidden md:flex flex-col">
+        <h2 class="text-2xl font-bold text-blue-600 mb-6">Water For Life</h2>
+        <nav class="flex flex-col gap-4">
+          <a
+            href="/"
+            class="hover:bg-blue-50 px-4 py-2 rounded-md text-gray-700"
+            >Home</a
+          >
+          <a
+            href="/predict"
+            class="hover:bg-blue-50 px-4 py-2 rounded-md text-gray-700"
+            >Predict</a
+          >
+          <a
+            href="/dash"
+            class="bg-blue-100 text-blue-700 font-semibold px-4 py-2 rounded-md"
+            >Dashboard</a
+          >
+          <a
+            href="/info"
+            class="hover:bg-blue-50 px-4 py-2 rounded-md text-gray-700"
+            >FAQs</a
+          >
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 overflow-y-auto">
+        <header class="mb-6">
+          <h1 class="text-3xl font-bold">Water Quality Dashboard</h1>
+
+          <p class="text-gray-600 mt-1">
+            Interactive insights into potability and water features
+          </p>
+        </header>
+
+        <!-- Overview Card -->
+        <section
+          class="bg-white rounded-2xl p-6 shadow mb-6 flex items-center justify-between"
+        >
+          <p class="text-gray-600 mb-6">
+            Explore the summary statistics and visualize key parameters that
+            affect water potability.
+          </p>
+          <button
+            onclick="downloadCSV()"
+            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md flex items-center gap-2"
+          >
+            <i class="fas fa-download"></i> Download CSV
+          </button>
+        </section>
+
+        <!-- Summary and Pie Chart Side by Side -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <!-- Summary BoxPlot Chart -->
+          <div
+            id="summary-chart"
+            class="bg-white rounded-xl p-4 shadow w-full h-[450px] overflow-hidden"
+          ></div>
+          <div
+            id="piechart-container"
+            class="bg-white rounded-xl p-4 shadow w-full h-[450px] overflow-hidden"
+          ></div>
+        </section>
+
+        <!-- Chart Control Buttons -->
+        <section
+          class="flex flex-wrap gap-4 mt-12 mb-6"
+          aria-label="Chart controls"
+        >
+          <button
+            onclick="loadChart('Scatter Plot')"
+            class="bg-green-100 hover:bg-green-200 p-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-braille text-green-700"></i> pH vs Sulphate
+          </button>
+          <button
+            onclick="loadChart('PH Histogram')"
+            class="bg-purple-100 hover:bg-purple-200 p-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-vial text-purple-700"></i> pH Histogram
+          </button>
+          <button
+            onclick="loadChart('OrganicCarbon')"
+            class="bg-emerald-100 hover:bg-emerald-200 p-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-leaf text-emerald-700"></i> Organic Carbon
+          </button>
+          <button
+            onclick="loadChart('Hardness')"
+            class="bg-blue-50 hover:bg-blue-100 p-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-gem text-blue-500"></i> Hardness
+          </button>
+          <button
+            onclick="loadChart('Sulphate')"
+            class="bg-orange-50 hover:bg-orange-100 p-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-flask text-orange-500"></i> Sulphate
+          </button>
+          <button
+            onclick="loadChart('Conductivity')"
+            class="bg-yellow-50 hover:bg-yellow-100 p-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-bolt text-yellow-500"></i> Conductivity
+          </button>
+          <button
+            onclick="loadChart('Turbidity')"
+            class="bg-gray-50 hover:bg-gray-100 p-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-cloud text-gray-500"></i> Turbidity
+          </button>
+        </section>
+
+        <!-- Chart Container -->
+        <section aria-label="Chart visualization">
+          <div
+            id="chart-container"
+            class="bg-white rounded-xl p-4 shadow w-full h-[450px] overflow-hidden"
+          ></div>
+        </section>
+      </main>
+    </div>
+
+    <!-- External scripts -->
+    <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="../static/JavaScript/DashScript.js"></script>
+  </body>
+</html>

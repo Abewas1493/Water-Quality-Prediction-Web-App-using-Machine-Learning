@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Predict</title>
+  <link rel="stylesheet" href="../static/CSS/PredictStyle.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>Water For Life</h1>
+      </div>
+      <ul class="links">
+        <li><a href="/">HOME</a></li>
+        <li><a class="active" href="/predict">PREDICT</a></li>
+        <li><a href="/dash">DASHBOARD</a></li>
+        <li><a href="/info">FAQs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Water Quality Prediction</h1>
+
+    <div class="text-box">
+      <p>
+        Discover the health of your water with a simple prediction.
+        Enter the parameters of your water sample, and let us unveil its quality for you.
+      </p>
+    </div>
+
+<form class="form" action="#" method="POST">
+  <div class="grid">
+    <div class="input-box">
+      <input type="number" name="ph" placeholder="ph" required step="0.000000001" max="14" min="0" value="{{ form_data['ph'] }}">
+    </div>
+    <div class="input-box">
+      <input type="number" name="Hardness" placeholder="Hardness" required step="0.000000001" value="{{ form_data['Hardness'] }}">
+    </div>
+    <div class="input-box">
+      <input type="number" name="Solids" placeholder="Solids" required step="0.000000001" value="{{ form_data['Solids'] }}">
+    </div>
+    <div class="input-box">
+      <input type="number" name="Chloramines" placeholder="Chloramines" required step="0.000000001" value="{{ form_data['Chloramines'] }}">
+    </div>
+    <div class="input-box">
+      <input type="number" name="Sulfate" placeholder="Sulfate" required step="0.000000001" value="{{ form_data['Sulfate'] }}">
+    </div>
+    <div class="input-box">
+      <input type="number" name="Conductivity" placeholder="Conductivity" required step="0.000000001" value="{{ form_data['Conductivity'] }}">
+    </div>
+    <div class="input-box">
+      <input type="number" name="Organic_carbon" placeholder="Organic_carbon" required step="0.000000001" value="{{ form_data['Organic_carbon'] }}">
+    </div>
+    <div class="input-box">
+      <input type="number" name="Trihalomethanes" placeholder="Trihalomethanes" required step="0.000000001" value="{{ form_data['Trihalomethanes'] }}">
+    </div>
+    <div class="input-box">
+      <input type="number" name="Turbidity" placeholder="Turbidity" required step="0.000000001" value="{{ form_data['Turbidity'] }}">
+    </div>
+<div class="button-group">
+  <div class="upload">
+    <button class="button" onclick="loadCSV()">Upload CSV File</button>
+  </div>
+  <div class="btn">
+    <button type="submit" name="predict" value="value">Predict</button>
+  </div>
+</div>
+
+</form>
+
+    <div class="flashed-message-container">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash-messages">
+            {% for message in messages %}
+              {% if 'Becareful!' in message %}
+                <div class="flash-message error">{{ message | safe }}</div>
+              {% elif 'Congrats!' in message %}
+                <div class="flash-message success">{{ message | safe }}</div>
+              {% else %}
+                <div class="flash-message">{{ message }}</div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+    </div>
+  </main>
+    <footer class="footer">
+      <div class="footer-container">
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/predict">Predict</a></li>
+          <li><a href="/dash">Dashboard</a></li>
+          <li><a href="/info">FAQs</a></li>
+        </ul>
+        <br />
+        <p>
+          &copy; 2025 Water For Life
+          issues
+        </p>
+      </div>
+    </footer>
+  <script src="../static/JavaScript/PredictScript.js"></script>
+</body>
+</html>

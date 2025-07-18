@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #3b82f6;
+  --secondary: #10b981;
+  --dark: #1f2937;
+  --light: #f9fafb;
+  --gray: #6b7280;
+  --danger: #ef4444;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #626c76 !important;
+  color: var(--dark);
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: rgba(0, 51, 102, 0.85);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(68, 67, 67, 0.3);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s ease;
+  border-radius: 5px;
+  font-family: monospace;
+}
+
+.links a:hover,
+.links a.active {
+  background-color: #1d415c;
+}
+
+.chart-btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.chart-btn:hover {
+  transform: scale(1.03);
+}
